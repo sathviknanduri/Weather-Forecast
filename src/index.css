@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Weather App Design System - Atmospheric & Dynamic */
+
+@layer base {
+  :root {
+    /* Atmospheric Base Colors */
+    --background: 220 20% 14%;
+    --foreground: 210 40% 98%;
+
+    /* Glass Card System */
+    --card: 220 20% 16%;
+    --card-foreground: 210 40% 98%;
+    --card-glass: 220 20% 20%;
+    --card-border: 220 30% 25%;
+
+    --popover: 220 20% 16%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Weather Theme Colors */
+    --primary: 210 100% 56%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 210 100% 70%;
+
+    --secondary: 220 15% 25%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 45 100% 65%;
+    --accent-foreground: 220 20% 14%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 30% 25%;
+    --input: 220 20% 20%;
+    --ring: 210 100% 56%;
+
+    /* Weather Condition Colors */
+    --sunny: 45 100% 65%;
+    --sunny-glow: 45 100% 75%;
+    --rainy: 210 60% 50%;
+    --rainy-dark: 220 40% 30%;
+    --cloudy: 220 15% 40%;
+    --snowy: 200 20% 85%;
+    --stormy: 240 30% 25%;
+
+    /* Gradients */
+    --gradient-sunny: linear-gradient(135deg, hsl(45, 100%, 65%) 0%, hsl(35, 100%, 55%) 100%);
+    --gradient-rainy: linear-gradient(135deg, hsl(220, 40%, 30%) 0%, hsl(210, 60%, 25%) 100%);
+    --gradient-cloudy: linear-gradient(135deg, hsl(220, 15%, 40%) 0%, hsl(210, 20%, 30%) 100%);
+    --gradient-night: linear-gradient(135deg, hsl(220, 30%, 10%) 0%, hsl(240, 40%, 15%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(220, 20%, 25%, 0.4) 0%, hsla(220, 20%, 15%, 0.2) 100%);
+
+    /* Atmospheric Effects */
+    --glow-soft: 0 0 30px hsla(var(--primary), 0.3);
+    --glow-intense: 0 0 50px hsla(var(--accent), 0.5);
+    --shadow-glass: 0 8px 32px hsla(220, 30%, 0%, 0.3);
+    --shadow-elevation: 0 4px 20px hsla(220, 30%, 0%, 0.2);
+
+    /* Animation Timings */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass Card Components */
+  .glass-card {
+    @apply backdrop-blur-xl border border-card-border/30 rounded-2xl;
+    background: var(--gradient-glass);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-card-border/50;
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: var(--shadow-elevation);
+    transform: translateY(-2px);
+  }
+
+  /* Weather Animation Effects */
+  .rain-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .raindrop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(transparent, hsl(var(--rainy)), transparent);
+    animation: rain-fall 1s linear infinite;
+  }
+
+  .snowflake {
+    position: absolute;
+    color: hsl(var(--snowy));
+    animation: snow-fall 3s linear infinite;
+    font-size: 1rem;
+  }
+
+  .cloud-float {
+    animation: cloud-drift 20s ease-in-out infinite;
+  }
+
+  .sun-glow {
+    animation: sun-pulse 3s ease-in-out infinite;
+    filter: drop-shadow(var(--glow-intense));
+  }
+
+  /* Gradient Backgrounds */
+  .bg-sunny {
+    background: var(--gradient-sunny);
+  }
+
+  .bg-rainy {
+    background: var(--gradient-rainy);
+  }
+
+  .bg-cloudy {
+    background: var(--gradient-cloudy);
+  }
+
+  .bg-night {
+    background: var(--gradient-night);
+  }
+
+  /* Weather Chart Styling */
+  .weather-chart {
+    @apply glass-card p-4;
+  }
+
+  /* Temperature Display */
+  .temp-display {
+    @apply text-5xl font-thin tracking-tight;
+    text-shadow: 0 2px 10px hsla(var(--foreground), 0.1);
+  }
+
+  /* Search Bar */
+  .search-glass {
+    @apply glass-card px-4 py-3 w-full;
+    transition: var(--transition-smooth);
+  }
+
+  .search-glass:focus-within {
+    @apply ring-2 ring-primary/50;
+    box-shadow: var(--glow-soft);
+  }
+}
+
+@layer utilities {
+  /* Animation Keyframes */
+  @keyframes rain-fall {
+    from {
+      transform: translateY(-100vh);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  @keyframes snow-fall {
+    from {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cloud-drift {
+    0%, 100% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+  }
+
+  @keyframes sun-pulse {
+    0%, 100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Loading Skeleton */
+  .skeleton {
+    @apply relative overflow-hidden bg-muted/20 rounded;
+  }
+
+  .skeleton::after {
+    @apply absolute inset-0;
+    content: '';
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsla(var(--foreground), 0.04),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+}
