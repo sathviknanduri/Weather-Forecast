@@ -4,6 +4,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
+**🔗 [View Live Application](https://weatherforcastsn.netlify.app/)**
+
 A modern, responsive weather application providing real-time meteorological data with a focus on clean UI and performant data fetching. Built using the **Vite + React** ecosystem for lightning-fast load times and type safety via **TypeScript**.
 
 ---
